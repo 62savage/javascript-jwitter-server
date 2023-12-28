@@ -7,9 +7,9 @@ let tweets = [
     id: "1",
     text: "집중하는 시간을 늘리자!",
     createAt: Date.now().toString(),
-    name: "Bob",
-    username: "bob",
-    url: "https://t1.daumcdn.net/cfile/tistory/18777A4A4EC0CFE941",
+    name: "CookieMonster",
+    username: "CM",
+    url: "https://i.scdn.co/image/ab6761610000e5eba3a7cba23d68a4e73c3b8155",
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ let tweets = [
     createAt: Date.now().toString(),
     name: "Elmo",
     username: "elmo",
-    url: "https://t1.daumcdn.net/cfile/tistory/18777A4A4EC0CFE941",
+    url: "https://cdn.imweb.me/thumbnail/20220117/e348ef04e2135.jpeg",
   },
 ];
 
@@ -26,8 +26,7 @@ router.get("/", (req, res, next) => {
   const data = username
     ? tweets.filter((t) => t.username === username)
     : tweets;
-  //vs res.status(200).json(tweets);
-  res.status(200).send(data);
+  res.status(200).json(data);
 });
 
 router.get("/:id", (req, res, next) => {
@@ -35,7 +34,7 @@ router.get("/:id", (req, res, next) => {
   // wrong - 있는지 없는지 + filter가 아니라 find
   const tweet = tweets.find((t) => t.id === id);
   if (tweet) {
-    res.status(200).send(tweet);
+    res.status(200).json(tweet);
   } else {
     res.status(404).json({ message: `Tweet id(${id}) not found` });
   }
@@ -46,12 +45,12 @@ router.post("/", (req, res, next) => {
   const tweet = {
     id: Date.now().toString(),
     text,
-    createAt: Date.now().toString(),
+    createAt: new Date(),
     name,
     username,
   };
   tweets = [tweet, ...tweets];
-  res.status(201).send(tweet);
+  res.status(201).json(tweet);
 });
 
 router.put("/:id", (req, res, next) => {
@@ -60,7 +59,7 @@ router.put("/:id", (req, res, next) => {
   const tweet = tweets.find((t) => t.id === id);
   if (tweet) {
     tweet.text = text;
-    res.status(200).send(tweet);
+    res.status(200).json(tweet);
   } else {
     res.status(404).json({ message: `Tweet id(${id}) not found` });
   }
@@ -69,7 +68,7 @@ router.put("/:id", (req, res, next) => {
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params;
   tweets = tweets.filter((t) => t.id !== id);
-  res.status(204);
+  res.sendStatus(204);
 });
 
 export default router;
