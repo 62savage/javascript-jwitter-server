@@ -1,7 +1,7 @@
 let tweets = [
   {
     id: "1",
-    text: "집중하는 시간을 늘리자!",
+    text: "COOOOOOKI...E",
     createAt: Date.now().toString(),
     name: "CookieMonster",
     username: "CM",
@@ -9,7 +9,7 @@ let tweets = [
   },
   {
     id: "2",
-    text: "안녕",
+    text: "fking awesome",
     createAt: Date.now().toString(),
     name: "Elmo",
     username: "elmo",
@@ -17,19 +17,19 @@ let tweets = [
   },
 ];
 
-export function getAll() {
+export async function getAll() {
   return tweets;
 }
 
-export function getAllByUserName(username) {
+export async function getAllByUserName(username) {
   return tweets.filter((t) => t.username === username);
 }
 
-export function getById(id) {
+export async function getById(id) {
   return tweets.find((t) => t.id === id);
 }
 
-export function create(text, name, username) {
+export async function create(text, name, username) {
   const tweet = {
     id: Date.now().toString(),
     text,
@@ -41,7 +41,7 @@ export function create(text, name, username) {
   return tweet;
 }
 
-export function update(id, text) {
+export async function update(id, text) {
   const tweet = tweets.find((t) => t.id === id);
   if (tweet) {
     tweet.text = text;
@@ -49,7 +49,7 @@ export function update(id, text) {
   return tweet;
 }
 
-export function remove(id) {
+export async function remove(id) {
   tweets = tweets.filter((t) => t.id !== id);
 }
 export default tweets;
