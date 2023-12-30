@@ -6,18 +6,21 @@ import morgan from "morgan";
 // Security
 import helmet from "helmet";
 import tweetRouter from "./router/tweet.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
-// const corsOptions = {
-//   origin: ["http://localhost:3000"],
-//   optionsSuccessStatus: 200,
-//   credentials: true, // Access-Control-Allow-Credentials: true
-// };
+const corsOptions = {
+  origin: [process.env.BASE_URL],
+  optionsSuccessStatus: 200,
+  credentials: true, // Access-Control-Allow-Credentials: true
+};
 
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 
 app.use("/tweets", tweetRouter);
