@@ -5,8 +5,9 @@ import cors from "cors";
 import morgan from "morgan";
 // Security
 import helmet from "helmet";
-import tweetRouter from "./router/tweet.js";
 import dotenv from "dotenv";
+import tweetRouter from "./router/tweet.js";
+import authRouter from "./router/auth.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(cors(corsOptions));
 app.use(helmet());
 
 app.use("/tweets", tweetRouter);
+app.use("/auth", authRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);
