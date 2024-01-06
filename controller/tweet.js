@@ -1,4 +1,5 @@
 import * as tweetRepository from "../data/tweet.js";
+import {} from "express-async-errors";
 
 export async function getTweets(req, res) {
   const { username } = req.query;

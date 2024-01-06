@@ -1,6 +1,14 @@
 let tweets = [
   {
     id: "1",
+    text: "Next I’m buying Coca-Cola to put the cocaine back in!!",
+    createAt: Date.now().toString(),
+    name: "Elmo",
+    username: "elmo13",
+    url: "https://cdn.imweb.me/thumbnail/20220117/e348ef04e2135.jpeg",
+  },
+  {
+    id: "2",
     text: "COOOOOOKI...E",
     createAt: Date.now().toString(),
     name: "CookieMonster",
@@ -8,12 +16,12 @@ let tweets = [
     url: "https://i.scdn.co/image/ab6761610000e5eba3a7cba23d68a4e73c3b8155",
   },
   {
-    id: "2",
-    text: "fking awesome",
+    id: "3",
+    text: "I hope that even my worst critics remain on Twitter, because that is what free speech means",
     createAt: Date.now().toString(),
-    name: "Elmo",
-    username: "elmo",
-    url: "https://cdn.imweb.me/thumbnail/20220117/e348ef04e2135.jpeg",
+    name: "Elon Musk",
+    username: "elonmusk",
+    url: "https://pbs.twimg.com/profile_images/1683325380441128960/yRsRRjGO_400x400.jpg",
   },
 ];
 
